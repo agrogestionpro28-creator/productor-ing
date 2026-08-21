@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; }
+  body { background: #0a0a0a; color: #f5f5f5; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; }
+  ::selection { background: #f59e0b; color: #0a0a0a; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #111; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+}
+
+@layer components {
+  .field { @apply w-full px-3 py-2 bg-base-3 border border-base-5 rounded text-hi placeholder:text-lo text-sm focus:outline-none focus:border-ochre focus:ring-1 focus:ring-ochre/30 transition-colors; }
+  .btn { @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded font-semibold text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-ochre text-[#0a0a0a] hover:bg-ochre-dark; }
+  .btn-afa    { @apply btn bg-afa text-[#0a0a0a] hover:bg-afa-dark; }
+  .btn-ghost  { @apply btn border border-base-5 text-mid hover:border-ochre hover:text-ochre; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+  .card { @apply bg-base-3 border border-base-5 rounded-card; }
+  .eyebrow { @apply text-[10px] font-bold tracking-[0.16em] uppercase text-ochre; }
+
+  /* Módulo grain */
+  .card-grain { @apply card border-grain/30 bg-[#1a1000]; }
+  /* Módulo insumos */
+  .card-input { @apply card border-input/30 bg-[#10101a]; }
+  /* Módulo combustible */
+  .card-fuel  { @apply card border-fuel/30 bg-[#1a1010]; }
+  /* Módulo finanzas */
+  .card-money { @apply card border-money/30 bg-[#0a1a12]; }
+}
