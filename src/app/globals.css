@@ -2,34 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
-  html { -webkit-font-smoothing: antialiased; }
-  body { background: #0a0a0a; color: #f5f5f5; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; }
-  ::selection { background: #f59e0b; color: #0a0a0a; }
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: #111; }
-  ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    background: #080808;
+    color: #f5f5f5;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+  }
+  ::selection { background: #f59e0b; color: #000; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  select option { background: #111; color: #f5f5f5; }
 }
 
 @layer components {
-  .field { @apply w-full px-3 py-2 bg-base-3 border border-base-5 rounded text-hi placeholder:text-lo text-sm focus:outline-none focus:border-ochre focus:ring-1 focus:ring-ochre/30 transition-colors; }
-  .btn { @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded font-semibold text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed; }
-  .btn-primary { @apply btn bg-ochre text-[#0a0a0a] hover:bg-ochre-dark; }
-  .btn-afa    { @apply btn bg-afa text-[#0a0a0a] hover:bg-afa-dark; }
-  .btn-ghost  { @apply btn border border-base-5 text-mid hover:border-ochre hover:text-ochre; }
-  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
-  .card { @apply bg-base-3 border border-base-5 rounded-card; }
-  .eyebrow { @apply text-[10px] font-bold tracking-[0.16em] uppercase text-ochre; }
+  .field {
+    @apply w-full px-4 py-3 rounded-xl text-white text-sm
+           focus:outline-none transition-all;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .field:focus {
+    border-color: #f59e0b;
+    background: rgba(245,158,11,0.08);
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.1);
+  }
+  .field::placeholder { color: rgba(255,255,255,0.2); }
 
-  /* Módulo grain */
-  .card-grain { @apply card border-grain/30 bg-[#1a1000]; }
-  /* Módulo insumos */
-  .card-input { @apply card border-input/30 bg-[#10101a]; }
-  /* Módulo combustible */
-  .card-fuel  { @apply card border-fuel/30 bg-[#1a1010]; }
-  /* Módulo finanzas */
-  .card-money { @apply card border-money/30 bg-[#0a1a12]; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5
+           rounded-xl font-semibold text-sm transition-all
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #000;
+  }
+  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+  .btn-afa {
+    @apply btn;
+    background: linear-gradient(135deg, #2EAA6E, #1d7a4d);
+    color: #000;
+  }
+
+  .btn-ghost {
+    @apply btn;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); color: white; }
+
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-500;
+  }
+
+  .card {
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .card-glass {
+    border-radius: 16px;
+    background: rgba(15,15,15,0.8);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .eyebrow {
+    @apply text-[10px] font-bold tracking-[0.2em] uppercase;
+    color: #f59e0b;
+  }
+
+  .section-title {
+    @apply text-2xl font-black text-white;
+  }
+
+  /* Module accent colors */
+  .accent-grain  { color: #f59e0b; }
+  .accent-input  { color: #818cf8; }
+  .accent-fuel   { color: #f87171; }
+  .accent-money  { color: #34d399; }
 }
